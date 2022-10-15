@@ -1,6 +1,6 @@
-// Double-checked locking idiom
 final class Foo {
-  private Helper helper = null;
+  private volatile Helper helper = null;
+ 
   public Helper getHelper() {
     if (helper == null) {
       synchronized (this) {
@@ -11,6 +11,4 @@ final class Foo {
     }
     return helper;
   }
- 
-  // Other methods and members...
 }
