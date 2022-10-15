@@ -1,6 +1,8 @@
-
-protected static Digester webDigester = null;
+protected static final Digester webDigester = init();
  
-if (webDigester == null) {
-  webDigester = createWebDigester();
+protected Digester init() {
+  Digester digester = createWebDigester();
+  // Does not use the context Classloader at initialization
+  digester.getParser();
+  return digester;
 }
